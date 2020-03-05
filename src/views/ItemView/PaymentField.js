@@ -93,6 +93,7 @@ function PaymentField() {
         <div className='payment-field__exp-wrapper'>
           <div className='payment-field__exp-month'>
             <TextField
+            type="number"
             value={cardMonth}
             onChange={e => setCardMonth(e.target.value)}
             fullWidth
@@ -103,6 +104,7 @@ function PaymentField() {
           <p className='payment-field__exp-divider'>/</p>
           <div className='payment-field__exp-year'>
             <TextField
+            type="number"
             value={cardYear}
             onChange={e => setCardYear(e.target.value)}
             fullWidth

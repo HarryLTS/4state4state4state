@@ -16,6 +16,8 @@ const images = [
   { id: 13, src: require('./images/mango guice.jpg'), title: '' },
   { id: 14, src: require('./images/kale btw.jpg'), title: '' },
   { id: 15, src: require('./images/vegan water.jpg'), title: '' },
+  { id: 16, src: require('./images/summer protien.jpg'), title: '' },
+  { id: 17, src: require('./images/booster guice.png'), title: '' },
 ];
 
 const descs = [
@@ -35,6 +37,8 @@ const descs = [
   'A very popular drink because of how good it tastes. A moderate amount of protien is included.',
   'NEW PRODUCT: VEGAN OPTIONS. These drinks are made from grass directly from the ground. There is no middleman, we take the grass and serve it directly to you.',
   "NEW PRODUCT: VEGAN OPTIONS. A variant of water, but it's green. Our in-house experts are unsure why.",
+  'A very cool drink during the summertime. Our Gymbo scientists have injected it with pure protein so that you can achieve never-before-seen levels of gains.',
+  'Through pure protein-fueled ingenuity, our Gymbo scientists have created a Guice which will boost your immune system so it can fight against new viral and bacterial diseases. 500g of protien included.'
 ]
 const products = [
   { id: 0, imgId: 1, name: 'Vermicious Vitamins ', priceUSD: 6.99, desc: descs[0], releaseDate:0, purchasesMade:-99 },
@@ -53,8 +57,8 @@ const products = [
   { id: 13, imgId: 13, name: 'Mango Delight Refresher', priceUSD: 4.99, desc: descs[13], releaseDate:0, purchasesMade:-98 },
   { id: 14, imgId: 14, name: 'Grass Guice', priceUSD: 3.49, desc: descs[14], releaseDate:-99, purchasesMade:0 },
   { id: 15, imgId: 15, name: 'Vegan Liquid', priceUSD: 1.99, desc: descs[15], releaseDate:-100, purchasesMade:0 },
-
-
+  { id: 16, imgId: 16, name: 'Summer Protien Guice', priceUSD: 4.99, desc: descs[16], releaseDate:0, purchasesMade:0 },
+  { id: 17, imgId: 17, name: 'Immunobooster Protein Guice', priceUSD: 12.99, desc: descs[17], releaseDate:-101, purchasesMade:0 },
 ];
 
 export const gymboLogo = require('./images/black.png');
