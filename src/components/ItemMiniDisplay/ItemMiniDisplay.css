@@ -1,0 +1,33 @@
+.item-mini-display__img-wrapper {
+  height:220px;
+  width:100%;
+  text-align: center;
+}
+
+.item-mini-display__img {
+  max-width:100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+.item-mini-display {
+  border: 3px solid red;
+}
+
+.item-mini-display__button {
+    text-decoration: none;
+    color: inherit;
+    background: inherit;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.item-mini-display__button:hover {
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+}

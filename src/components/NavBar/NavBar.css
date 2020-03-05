@@ -1,0 +1,32 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: red;
+}
+
+.nav__item {
+  background-color: red;
+  border-bottom: 5px solid darkred;
+  color: white;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav__item:hover {
+  background-color: #ce0606;
+  cursor: pointer;
+}
+.nav__item--logo {
+  margin-left: auto;
+}
+
+.nav__item__link {
+  padding: 1em 1.5em;
+  width:100%;
+  height: 100%;
+  color:white;
+  text-decoration: none;
+}

@@ -1,0 +1,82 @@
+.item-view {
+  width: 98%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.item-view__title {
+  text-align: left;
+  font-size: 4em;
+}
+
+.item-view__info {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.item-view__product {
+  display: flex;
+  flex-direction: row;
+}
+
+.item-view__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.item-view__desc {
+  font-size: 1.5em;
+}
+.item-view__image {
+  height: 600px;
+  text-align: center;
+}
+.item-view__image>img {
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.item-view__payment-wrapper {
+  text-align: right;
+  width: 500px;
+}
+.item-view__payment-wrapper>h2 {
+  text-align: center;
+
+}
+
+.payment-field__exp-wrapper {
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.payment-field__exp-month {
+  width: 50px;
+}
+
+.payment-field__exp-year {
+  width: 80px;
+}
+.payment-field__ccv-wrapper {
+
+}
+.payment-field {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.payment-field>div {
+  margin: 15px;
+}
+
+.payment-field__submit-button {
+  padding-top: 10px;
+}
+
+.payment-field__link {
+  text-decoration: none;
+}
