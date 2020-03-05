@@ -7,9 +7,13 @@ import { imageLoader, productLoader } from './../../common/constants';
 import { sortByKey } from './../../common/helper';
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
+import { useSelector } from 'react-redux';
+import { getRandomColor } from './../../common/helper';
+
+
 
 function Home() {
-
+  const masterKey = useSelector(state => state.masterKey);
   const images = imageLoader();
   const products = productLoader();
 
@@ -17,9 +21,9 @@ function Home() {
     return (
       <div className='main-display'>
         <div className='main-display__text-wrapper'>
-          <h1 className='main-display__title'>Get Guiced</h1>
+          <h1 className='main-display__title' key={masterKey + '0'} style={getRandomColor()}>Get Guiced</h1>
           <div className='main-display__catalog-button'>
-            <Link to="/catalog" className='main-display__catalog-button__link'>
+            <Link to="/catalog" className='main-display__catalog-button__link' key={masterKey} style={getRandomColor()}>
               Browse Products >>
             </Link>
           </div>
@@ -32,14 +36,14 @@ function Home() {
   }
 
   const renderSortedMiniViewsByKey = (key) => {
+    //const sortedItems = sortByKey(products, key);
     const sortedItems = sortByKey(products, key);
-
     const itemDisplays = [];
     for (let i = 0; i < Math.min(4, sortedItems.length); i++) {
       itemDisplays.push(
-        <Grid item xs={3}>
+        <Grid item xs={3} key={masterKey + ',' + i} style={getRandomColor()}>
           <ItemMiniDisplay
-          key={i}
+          key={sortedItems[i].id}
           product={sortedItems[i]}
           imgSrc={images[sortedItems[i].imgId].src}
           />
@@ -55,9 +59,9 @@ function Home() {
 
   const renderHotItems = () => {
     return (
-      <div className='hot-items'>
+      <div className='hot-items' key={masterKey + '12'} style={getRandomColor()}>
         <h2 className='hot-items__title'>
-          HOT ITEM
+          HOT ITEMS
         </h2>
         <div>
           {renderSortedMiniViewsByKey('purchasesMade')}
@@ -68,9 +72,9 @@ function Home() {
 
   const renderNewItems = () => {
     return (
-      <div className='new-items'>
+      <div className='new-items' key={masterKey} style={getRandomColor()}>
         <h2 className='new-items__title'>
-          NEW ITEM
+          NEW ITEMS
         </h2>
         <div>
           {renderSortedMiniViewsByKey('releaseDate')}
@@ -80,9 +84,9 @@ function Home() {
   }
 
   return (
-    <div>
+    <div key={masterKey} style={getRandomColor()}>
       <NavBar />
-      <div className='home-content-wrapper'>
+      <div className='home-content-wrapper' key={masterKey} style={getRandomColor()}>
         {renderMainDisplay()}
         {renderHotItems()}
         {renderNewItems()}

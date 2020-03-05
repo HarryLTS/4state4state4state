@@ -2,15 +2,22 @@ import React from "react";
 import NavBar from './../../components/NavBar/NavBar';
 import Footer from './../../components/Footer/Footer';
 import './About.css';
+import { useSelector } from 'react-redux';
+import { getRandomColor } from './../../common/helper';
 
 function About() {
+  const masterKey = useSelector(state => state.masterKey);
   return (
-    <div className='about'>
+    <div className='about' key={masterKey} style={getRandomColor()}>
       <NavBar />
       <div className='about__content'>
         <h1>WE ARE GYMBO GUICE</h1>
         <p className='about__desc'>
-        Dear Internet, Where do I begin... Let's start with this -I'm sorry. This is a first for me. I've never faced criticism like this before, because I've never made a mistake like this before. I'm surrounded by good people and believe I make good decisions, but I'm still a human being. I can be wrong. I didn't do it for views. I get views. I did it because I thought I could make a positive ripple on the internet, not cause a monsoon of negativity. That's never the intention. I intended to raise awareness for suicide and suicide prevention and while I thought "if this video saves just ONE life, it'll be worth it," I was misguided by shock and awe, as portrayed in the video. I still am. I do this sh*t every day. I've made a 15 minute TV show EVERY SINGLE DAY for the past 460+ days. One may understand that it's easy to get caught up in the moment without fully weighing the possible ramifications. I'm often reminded of how big of a reach I truly have & with great power comes great responsibility... for the first time in my life I'm regretful to say I handled that power incorrectly. It won't happen again. I love everyone. I believe in people. I'm out here. Peace #Logang4Life
+        Back in 2010, the founders of Gymbo Guice wanted to enjoy protien drink. But however, there only was the mediocre and low quality protien drinks on the market. Mr. Yan and I decided to leave our jobs as circus clowns to start up a brand new company to serve good quality Guice to everyone who would like to try it. Today, Gymbo Guice has over 95234 locations around the United States and we are rapidly expanding due to the very high quality of our Guices.
+        </p>
+        <h1>OUR GYMBO PROMISE</h1>
+        <p className='about__desc'>
+        What can you expect from Gymbo Guice? Only the highest quality of Guices available in the entire world. We at Gymbo Guice pride ourselves on natural ingredients sourced directly from the ground, sometime minutes before they reach your lips. That is the only way. It is our GYMBO WAY.
         </p>
       </div>
       <Footer />

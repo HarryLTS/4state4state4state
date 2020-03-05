@@ -17,6 +17,7 @@
 .item-view__product {
   display: flex;
   flex-direction: row;
+  width: -webkit-fill-available;
 }
 
 .item-view__content {
@@ -30,6 +31,7 @@
 }
 .item-view__image {
   height: 600px;
+  max-width: 50%;
   text-align: center;
 }
 .item-view__image>img {
@@ -43,8 +45,8 @@
   width: 500px;
 }
 .item-view__payment-wrapper>h2 {
-  text-align: center;
-
+  text-align: right;
+  padding-right: 15px;
 }
 
 .payment-field__exp-wrapper {
@@ -68,9 +70,13 @@
   flex-direction: column;
   height: 500px;
 }
+.payment-field__exp-divider {
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
 .payment-field>div {
-  margin: 15px;
+  padding: 7px 10px;
 }
 
 .payment-field__submit-button {
@@ -79,4 +85,7 @@
 
 .payment-field__link {
   text-decoration: none;
+}
+.payment-field__error {
+  color: red;
 }

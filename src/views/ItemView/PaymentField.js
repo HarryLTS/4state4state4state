@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from "react";
-import InvalidView from "./../InvalidView/InvalidView";
-import NavBar from './../../components/NavBar/NavBar';
-import Footer from './../../components/Footer/Footer';
 import { Slider, TextField, MenuItem, Select, Button } from '@material-ui/core';
-import { imageLoader, productLoader, ccvTranslations } from './../../common/constants';
+import { ccvTranslations } from './../../common/constants';
 import {  validateCardNumber } from './../../common/helper';
 import { Link } from "react-router-dom";
 import './ItemView.css';
 
+
 function PaymentField() {
   const CARD_NUMBER_MAX = 9999999999999999;
-  const currentYear = (new Date).getFullYear()
+
   const [cardNumber, setCardNumber] = useState(0);
   const [validCard, setValidCard] = useState(true);
   const [moved, setMoved] = useState(false);
 
-  const [cardMonth, setCardMonth] = useState(0);
-  const [cardYear, setCardYear] = useState(0);
+  const [cardMonth, setCardMonth] = useState(1);
+  const [cardYear, setCardYear] = useState(2000);
 
   const [ccv, setCcv] = useState(0);
+  const [showFormError, setShowFormError] = useState(false);
+
+  const validMonth = () => {
+    return !(cardMonth < 1 || cardMonth > 12);
+  }
+
+  const validYear = () => {
+    const currentYear = (new Date()).getFullYear();
+    return !(cardYear < 1 || cardYear > currentYear);
+  }
 
   useEffect(() => {
     const stringCard = cardNumber.toString();
@@ -26,14 +34,16 @@ function PaymentField() {
   }, [cardNumber]);
   const handleSliderChange = (e, value) => {
     const newNumber = Math.round((value / 100) * CARD_NUMBER_MAX + Math.random() * (CARD_NUMBER_MAX/100));
-    if (value == 0) setCardNumber(0);
+    if (value === 0) setCardNumber(0);
     else if (newNumber > CARD_NUMBER_MAX) setCardNumber(CARD_NUMBER_MAX);
     else setCardNumber(newNumber);
+    setMoved(true);
   }
 
   const handleTextFieldInputChange = (e) => {
+
     setMoved(true);
-    setCardNumber(e.target.value == "" ? 0 : e.target.valueAsNumber);
+    setCardNumber(e.target.value === "" ? 0 : e.target.valueAsNumber);
   }
 
   const handleBlur = () => {
@@ -42,18 +52,23 @@ function PaymentField() {
   }
 
   const handleSelectChange = (e) => {
-    setMoved(true);
     setCcv(e.target.value);
   }
 
   const renderMenuItems = () => {
     let menuItems = [];
     for (let n = 0; n <= 999; n++) {
-      menuItems.push(<MenuItem value={n}>{ccvTranslations[n]}</MenuItem>);
+      menuItems.push(<MenuItem key={n} value={n}>{ccvTranslations[n]}</MenuItem>);
     }
     return menuItems;
   }
 
+  const handleSubmit = (e) => {
+    if (!validCard || !validMonth() || !validYear()) {
+      e.preventDefault();
+      setShowFormError(true);
+    }
+  }
   return (
     <div className='payment-field'>
       <div>
@@ -63,6 +78,7 @@ function PaymentField() {
         onChange={handleSliderChange}
         />
         <TextField
+        disabled
         fullWidth
         onChange={handleTextFieldInputChange}
         onBlur={handleBlur}
@@ -77,19 +93,21 @@ function PaymentField() {
         <div className='payment-field__exp-wrapper'>
           <div className='payment-field__exp-month'>
             <TextField
+            value={cardMonth}
             onChange={e => setCardMonth(e.target.value)}
             fullWidth
-            error={cardMonth < 0 || cardMonth > 12}
-            helperText={(cardMonth < 0 || cardMonth > 12) ? "Invalid month" : ""}
+            error={!validMonth()}
+            helperText={!validMonth() ? "Invalid month" : ""}
             />
           </div>
-          <p>/</p>
+          <p className='payment-field__exp-divider'>/</p>
           <div className='payment-field__exp-year'>
             <TextField
+            value={cardYear}
             onChange={e => setCardYear(e.target.value)}
             fullWidth
-            error={cardYear < 0 || cardYear > currentYear}
-            helperText={(cardYear < 0 || cardYear > currentYear) ? "Invalid year" : ""}
+            error={!validYear()}
+            helperText={!validYear() ? "Invalid year" : ""}
             />
           </div>
         </div>
@@ -105,11 +123,17 @@ function PaymentField() {
         </Select>
       </div>
       <div className='payment-field__submit-button'>
-        <Link className='payment-field__link' to='/payment'>
+        <Link onClick={handleSubmit} className='payment-field__link' to='/payment'>
           <Button variant="contained" fullWidth> Buy Now
           </Button>
         </Link>
       </div>
+      {
+      showFormError &&
+      <div className='payment-field__error'>
+        <p>Error: One or more fields were filled out incorrectly.</p>
+      </div>
+      }
     </div>
   );
 }

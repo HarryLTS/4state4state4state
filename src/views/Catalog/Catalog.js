@@ -6,8 +6,12 @@ import ItemMiniDisplay from './../../components/ItemMiniDisplay/ItemMiniDisplay'
 import { imageLoader, productLoader } from './../../common/constants';
 import { sortByKey } from './../../common/helper';
 import Grid from "@material-ui/core/Grid";
+import { useSelector } from 'react-redux';
+import { getRandomColor } from './../../common/helper';
+
 
 function Catalog() {
+  const masterKey = useSelector(state => state.masterKey);
   const images = imageLoader();
   const products = productLoader();
 
@@ -15,7 +19,7 @@ function Catalog() {
     const itemDisplays = [];
     for (let i = 0; i < products.length; i++) {
       itemDisplays.push(
-        <Grid item xs={3}>
+        <Grid item xs={3} key={masterKey + ',' + i} style={getRandomColor()}>
           <ItemMiniDisplay
           key={i}
           product={products[i]}
@@ -44,7 +48,7 @@ function Catalog() {
   }
 
   return (
-    <div>
+    <div key={masterKey} style={getRandomColor()}>
       <NavBar />
       {renderCatalog()}
       <Footer />

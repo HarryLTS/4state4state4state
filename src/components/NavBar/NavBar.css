@@ -21,6 +21,12 @@
 }
 .nav__item--logo {
   margin-left: auto;
+  height:60px;
+}
+
+.nav__item--logo>img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .nav__item__link {
@@ -29,4 +35,9 @@
   height: 100%;
   color:white;
   text-decoration: none;
+}
+
+.nav__item--supermode {
+  font-weight: bold;
+  margin-left: 20%;
 }

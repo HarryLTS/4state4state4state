@@ -11,6 +11,7 @@
 }
 
 .main-display__title {
+  padding: 10px;
   font-size: 6em;
 }
 .main-display__text-wrapper {
@@ -27,6 +28,7 @@
   font-size: 3em;
   color: black;
   white-space: nowrap;
+  padding: 10px;
 }
 .main-display__img-wrapper {
   height: 600px;
@@ -43,5 +45,13 @@
 }
 .new-items__title {
   padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.hot-items__title {
+  padding-bottom: 10px;
+}
+
+.new-items__title {
   padding-bottom: 10px;
 }

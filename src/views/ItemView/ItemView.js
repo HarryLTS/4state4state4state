@@ -8,16 +8,22 @@ import Button from '@material-ui/core/Button';
 import PaymentField from './PaymentField';
 import { imageLoader, productLoader } from './../../common/constants';
 import './ItemView.css';
+import { useSelector } from 'react-redux';
+import { getRandomColor } from './../../common/helper';
+
+
 
 function ItemView(props) {
+  const masterKey = useSelector(state => state.masterKey);
   if (isNaN(props.match.params.id)) return <InvalidView />
   const id = parseInt(props.match.params.id);
   const images = imageLoader();
   const product = productLoader()[id];
 
+
   const renderMainDisplay = () => {
     return (
-      <div className='item-view'>
+      <div className='item-view' key={masterKey} style={getRandomColor()}>
         <div className='item-view__content'>
           <div className='item-view__product'>
             <div className='item-view__image'>
@@ -31,7 +37,7 @@ function ItemView(props) {
             </div>
           </div>
 
-          <div className='item-view__payment-wrapper'>
+          <div className='item-view__payment-wrapper' key={masterKey} style={getRandomColor()}>
             <h2>Price: ${product.priceUSD.toFixed(2)}</h2>
             <PaymentField />
 
